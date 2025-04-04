@@ -1,13 +1,20 @@
 import express from "express";
 import CategoriaController from "../controller/categoriaController.js";
-import { validarcategoria } from "../midlewares/validarcategoria.js";
+import { validarCategoria } from "../midlewares/validarcategoria.js";
+
 
 const router = express.Router();
 
 router.get("/", CategoriaController.getAllCategoria);
 
-router.post("/",validarcategoria,CategoriaController.createCategoria);
+router.post("/",validarCategoria,CategoriaController.createCategoria);
 
-router.put("/:id",CategoriaController.actualizarCategoria);
+router.put("/:id", CategoriaController.actualizarCategoria);
 
+router.patch('/:id', CategoriaController.actualizarParcialCategoria);
+
+router.delete('/:id', CategoriaController.eliminarCategoria);
+
+
+  
 export default router;
